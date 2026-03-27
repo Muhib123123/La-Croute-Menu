@@ -22,8 +22,7 @@ const menuData = {
         { name: "Salade van spekbonen", desc: "Geroosterde groenten, ei en Franse dressing", price: "15,00", veg: true }
       ],
       vegetarian: [
-        { name: "Gesauteerde spinazie", desc: "Met bospaddenstoelen en bladerdeeghoedje", price: "24,00" },
-        { name: "Pizza bambino", desc: "Vegetarische pizza voor de kleintjes", price: "9,50" }
+        { name: "Gesauteerde spinazie", desc: "Met bospaddenstoelen en bladerdeeghoedje", price: "24,00" }
       ],
       nonVegetarian: [
         { name: "Catch of the day", desc: "Dagelijks wisselende verse vis", price: "28,50" },
@@ -101,7 +100,6 @@ const menuData = {
       ],
       vegetarian: [
         { name: "Sautéed Spinach", desc: "With forest mushrooms and puff pastry crust", price: "24.00" },
-        { name: "Pizza Bambino", desc: "Vegetarian pizza for the little ones", price: "9.50" }
       ],
       nonVegetarian: [
         { name: "Catch of the Day", desc: "Daily changing fresh fish", price: "28.50" },
