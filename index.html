@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Croute | Premium Menu</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Inline specific layout styles to ensure premium feel */
+    :root {
+      --header-bg: rgba(254, 253, 251, 0.95);
+    }
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background: var(--header-bg);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-xl);
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-container {
+      position: sticky;
+      top: var(--header-height);
+      background: var(--bg-primary);
+      padding: var(--space-md) 0;
+      z-index: 900;
+      overflow-x: auto;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--border-color);
+      scrollbar-width: none; /* Hide scrollbar Firefox */
+    }
+    
+    .nav-container::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
+
+    .nav-inner {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      padding: 0 var(--space-xl);
+    }
+
+    .nav-btn {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      font-weight: 500;
+      padding: 8px 16px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-btn:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, #ffffff 0%, #fefdfb 100%);
+      text-align: center;
+      padding-top: var(--header-height);
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero p {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+    }
+
+    .lang-btn {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 8px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      transition: var(--transition-fast);
+    }
+
+    .lang-btn:hover {
+      background: var(--text-primary);
+      color: var(--bg-primary);
+    }
+
+    .menu-section {
+      margin-bottom: var(--space-5xl);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: var(--space-3xl);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--border-color);
+      display: inline-block;
+    }
+
+    .items-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl) var(--space-4xl);
+    }
+
+    @media (min-width: 1024px) {
+      .items-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-md);
+    }
+
+    .item-name {
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .item-price {
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .item-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .subitems {
+      margin-top: var(--space-sm);
+      list-style: none;
+      padding-left: var(--space-md);
+      border-left: 1px solid var(--accent-soft);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .subitems li {
+      margin-bottom: var(--space-xs);
+    }
+
+    .veg-badge {
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 2px 6px;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+
+    .menu-category-header {
+      grid-column: 1 / -1;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-align: center;
+      margin: var(--space-xl) 0 var(--space-md);
+      font-weight: 600;
+    }
+
+    footer {
+      padding: var(--space-4xl) 0;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    
+    /* Animation Delays */
+    .reveal:nth-child(1) { animation-delay: 100ms; }
+    .reveal:nth-child(2) { animation-delay: 200ms; }
+    .reveal:nth-child(3) { animation-delay: 300ms; }
+    .reveal:nth-child(4) { animation-delay: 400ms; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">La Croute</div>
+    <button id="lang-btn" class="lang-btn" onclick="switchLang()">English</button>
+  </header>
+
+  <div class="hero">
+    <h1 id="title">La Croute</h1>
+    <p id="subtitle">Fine Dining & Steenoven</p>
+  </div>
+
+  <nav class="nav-container">
+    <div id="section-nav" class="nav-inner">
+      <!-- Nav buttons will be injected here -->
+    </div>
+  </nav>
+
+  <main class="container section-padding">
+    <div id="menu-container">
+      <!-- Menu sections will be injected here -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 La Croute. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
